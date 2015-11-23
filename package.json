@@ -22,9 +22,10 @@
   "dependencies": {
     "assetmanager": "latest",
     "async": "latest",
-    "bower": "latest",
     "body-parser": "latest",
+    "bower": "latest",
     "compression": "latest",
+    "config-chain": "^1.1.9",
     "connect-flash": "latest",
     "consolidate": "latest",
     "cookie-parser": "latest",
