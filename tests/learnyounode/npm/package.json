@@ -1,0 +1,17 @@
+{
+  "name": "@misterdavemeister/npm",
+  "version": "1.0.1",
+  "description": "tut",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": "www.davidmcole.com",
+  "dependencies": {
+    "@linclark/pkg": "^1.0.2",
+    "bl": "^1.0.0",
+    "through2-map": "^2.0.0"
+  }
+}
