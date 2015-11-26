@@ -171,23 +171,27 @@ var http = require('http'),
     
 http.createServer(function(req, res) {
     var parsedUrl = url.parse(req.url, true);
-    var time = parseQuery(parsedUrl.query, parsedUrl.pathname)
-    res.end(time);
+    var time = new Date(parsedUrl.query.iso);
+    var result = getTime(time, parsedUrl.pathname)
+    if (result) {
+	res.writeHead(200, {'Content-Type': 'application/json'});
+        res.end(result);
+    }
+    else {
+        res.writeHead(404);
+        res.end();
+    }
 }).listen(Number(port))
 
-function parseQuery(query, path) {
-    var queryStr = query['iso'], 
-        json = {};
-    if (path == '/api/parsetime') {
-        var time = queryStr.split("T")[1].split('.')[0].split(":"),
-            hour = time[0], min = time[1], sec = time[2];
-            json['hour'] = Number(hour);
-            json['minute'] = Number(min);
-            json['second'] = Number(sec);
-    }
-    else if (path == '/api/unixtime') {
-        var time = new Date(queryStr).getTime();
-        json['unixtime'] = Number(time);
-    }
-    return JSON.stringify(json);
+function getTime(time, path) {
+    var json = {};
+        if (path == '/api/parsetime') {
+            json['hour'] = time.getHours();
+            json['minute'] = time.getMinutes();
+            json['second'] = time.getSeconds();
+	 }
+ 	else if (path == '/api/unixtime') {
+            json['unixtime'] = time.getTime();
+        }
+        return JSON.stringify(json);
 }
