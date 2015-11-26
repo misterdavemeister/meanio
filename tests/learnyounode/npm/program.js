@@ -185,13 +185,13 @@ http.createServer(function(req, res) {
 
 function getTime(time, path) {
     var json = {};
-        if (path == '/api/parsetime') {
-            json['hour'] = time.getHours();
-            json['minute'] = time.getMinutes();
-            json['second'] = time.getSeconds();
-	 }
- 	else if (path == '/api/unixtime') {
-            json['unixtime'] = time.getTime();
-        }
-        return JSON.stringify(json);
+    if (path == '/api/parsetime') {
+        json['hour'] = time.getHours();
+        json['minute'] = time.getMinutes();
+        json['second'] = time.getSeconds();
+    }
+    else if (path == '/api/unixtime') {
+        json['unixtime'] = time.getTime();
+    }
+    return JSON.stringify(json);
 }
