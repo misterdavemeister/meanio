@@ -52,6 +52,7 @@ if ((cluster.isMaster) &&
     mean.serve({ workerid: workerId /* more options placeholder*/ }, function (app) {
       var config = app.config.clean;
       var port = config.https && config.https.port ? config.https.port : config.http.port;
+      console.log('Cluster is: ', cluster);
       console.log('Mean app started on port ' + port + ' (' + process.env.NODE_ENV + ') cluster.worker.id:', workerId);
 
       deferred.resolve(app);
